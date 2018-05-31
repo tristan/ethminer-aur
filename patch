@@ -1,0 +1,17 @@
+diff --git a/cmake/EthCompilerSettings.cmake b/cmake/EthCompilerSettings.cmake
+index d6c0347bc..b8eb4bebb 100644
+--- a/cmake/EthCompilerSettings.cmake
++++ b/cmake/EthCompilerSettings.cmake
+@@ -31,6 +31,12 @@ if (("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU") OR ("${CMAKE_CXX_COMPILER_ID}" MA
+ 	add_compile_options(-Wall)
+ 	add_compile_options(-Wextra)
+ 	add_compile_options(-Werror)
++        add_compile_options(-Wno-implicit-fallthrough)
++        add_compile_options(-Wno-stringop-overflow)
++        add_compile_options(-Wno-stringop-truncation)
++        add_compile_options("$<$<STREQUAL:$<TARGET_PROPERTY:LINKER_LANGUAGE>,CXX>:-Wno-catch-value>")
++        add_compile_options("$<$<STREQUAL:$<TARGET_PROPERTY:LINKER_LANGUAGE>,CXX>:-Wno-parentheses>")
++        add_compile_options("$<$<STREQUAL:$<TARGET_PROPERTY:LINKER_LANGUAGE>,CXX>:-Wno-deprecated>")
+
+ 	# Disable warnings about unknown pragmas (which is enabled by -Wall).
+ 	add_compile_options(-Wno-unknown-pragmas)
